@@ -93,6 +93,7 @@ const AuthPage = () => {
                 required
               />
               <button
+                // @ts-ignore
                 onClick={formik.handleSubmit}
                 disabled={isLoading}
                 style={{

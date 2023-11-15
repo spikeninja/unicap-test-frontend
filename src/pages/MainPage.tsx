@@ -24,6 +24,7 @@ const MainPage = () => {
       }
     }).then((res) => {
       if (res.data.status === "SUCCESS") {
+        // @ts-ignore
         clearInterval(myInterval.current)
         setIsLoading(false);
         setPages(res.data.pages);
@@ -50,6 +51,7 @@ const MainPage = () => {
       const { task_id: taskId, cached } = res.data;
       console.log('res: ', res)
       setIsLoading(true);
+      // @ts-ignore
       myInterval.current = setInterval(() => {handleTaskStatus(taskId)}, 1000);
     }
   };
@@ -94,6 +96,7 @@ const MainPage = () => {
                 <option value="motorbike_parts" label="motorbike_parts">Motorbike Parts</option>
               </select>
               <button
+                // @ts-ignore
                 onClick={formik.handleSubmit}
                 disabled={formik.isSubmitting}
                 style={{

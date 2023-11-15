@@ -9,5 +9,6 @@
 ## Production
 1) Run `npm i` to install all dependencies
 2) Run `npm run build` to get the `dist` build of the project
+3) Replace `API_URL` inside `src/api/assistant.ts` with deployed backend URL
 3) Place `dist` folder at a server with configured proxy rules for SPA files hosting
 4) Go to `your_server_domain`

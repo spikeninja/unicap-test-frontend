@@ -3,6 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material";
+import Input from "@mui/material";
+import OutlinedInput from "@mui/material";
 
 import { useAuthStore } from "../store/main";
 import { API_URL } from "../api/assistant";
@@ -66,7 +69,7 @@ const AuthPage = () => {
               alignItems: 'center',
               rowGap: 15,
             }}>
-              <input
+              <OutlinedInput
                 style={{
                   width: 300,
                   height: 30,
@@ -79,7 +82,7 @@ const AuthPage = () => {
                 onChange={formik.handleChange("email")}
                 required
               />
-              <input
+              <OutlinedInput
                 style={{
                   width: 300,
                   height: 30,
@@ -92,7 +95,8 @@ const AuthPage = () => {
                 onChange={formik.handleChange("password")}
                 required
               />
-              <button
+              <Button
+                variant="contained"
                 // @ts-ignore
                 onClick={formik.handleSubmit}
                 disabled={isLoading}
@@ -102,7 +106,7 @@ const AuthPage = () => {
                 }}
               >
                 {isLogin ? 'Login' : 'Register'}
-              </button>
+              </Button>
             </div>
           </>
         )}

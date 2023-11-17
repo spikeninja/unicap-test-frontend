@@ -8,6 +8,7 @@ import AuthPage from './pages/AuthPage';
 import { useAuthStore } from "./store/main";
 import ProtectedRoutes from "./hooks/protected";
 import { API_URL } from "./api/assistant";
+import Header from './components/Header/Header';
 
 function App() {
   const navigate = useNavigate()
@@ -31,12 +32,15 @@ function App() {
   }, [])
 
   return (
+    <>
+      <Header />
       <Routes>
         <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
           <Route index element={<MainPage />}/>
         </Route>
         <Route path='/auth' element={<AuthPage />} />
       </Routes>
+    </>
   );
 }
 

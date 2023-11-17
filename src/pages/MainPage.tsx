@@ -2,6 +2,11 @@ import axios from "axios";
 import { Formik } from "formik";
 import { useState, useRef } from "react";
 
+import Button from "@mui/material";
+import Select from "@mui/material";
+import InputLabel from "@mui/material";
+import MenuItem from "@mui/material";
+
 import { API_URL } from "../api/assistant";
 import Product from "../components/Product";
 import { useAuthStore } from "../store/main";
@@ -81,30 +86,35 @@ const MainPage = () => {
           {(formik) => (
             <>
               <div style={{
-                flexDirection: 'column'
+                flexDirection: 'column',
+                paddingTop: 5,
+                paddingBottom: 10,
               }}>
-              <select 
+              <InputLabel id="category-selector">Category</InputLabel>
+              <Select 
+                labelId="category-selector"
                 name="category"
                 value={formik.values.category}
                 onChange={formik.handleChange("category")}
                 onBlur={formik.handleBlur}
               >
-                <option value="" label="Select a category">Cars</option>
-                <option value="cars" label="cars">Cars</option>
-                <option value="electronics" label="electronics">Electronics</option>
-                <option value="sport" label="sport">Sport</option>
-                <option value="motorbike_parts" label="motorbike_parts">Motorbike Parts</option>
-              </select>
-              <button
+                <MenuItem defaultChecked value="cars" label="cars">Cars</MenuItem>
+                <MenuItem value="electronics" label="electronics">Electronics</MenuItem>
+                <MenuItem value="sport" label="sport">Sport</MenuItem>
+                <MenuItem value="motorbike_parts" label="motorbike_parts">Motorbike Parts</MenuItem>
+              </Select>
+              <Button
+                variant="contained"
                 // @ts-ignore
                 onClick={formik.handleSubmit}
                 disabled={formik.isSubmitting}
                 style={{
+                  marginLeft: 15,
                   fontSize: 18,
                 }}
               >
                 Parse
-              </button>
+              </Button>
               </div>
             </>
           )}
